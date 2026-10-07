@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI and Elections Workshop</title>
+<meta name="description" content="Participant instructions for the AI and Elections Workshop on AI and Election Security Day, Oct. 7, 2026, at San Jose State University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    color-scheme: light dark;
+    --paper: #ECEEF0;
+    --panel: #FFFFFF;
+    --ink: #152238;
+    --ink-2: #4B5566;
+    --rule: #C6CCD5;
+    --mark: #F6E14B;
+    --mark-ink: #152238;
+    --link: #0A5BB5;
+    --focus: #0A5BB5;
+    --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --text: "Barlow", system-ui, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0F1726;
+      --panel: #182238;
+      --ink: #EEF1F5;
+      --ink-2: #B0B9C8;
+      --rule: #2F3B52;
+      --mark: #F6E14B;
+      --mark-ink: #152238;
+      --link: #8CC2F5;
+      --focus: #F6E14B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F1726;
+    --panel: #182238;
+    --ink: #EEF1F5;
+    --ink-2: #B0B9C8;
+    --rule: #2F3B52;
+    --mark: #F6E14B;
+    --mark-ink: #152238;
+    --link: #8CC2F5;
+    --focus: #F6E14B;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: inherit; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--text);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+  }
+  img { max-width: 100%; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .15em; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+
+  /* Masthead: the partner names */
+  .orgs {
+    list-style: none;
+    margin: 0;
+    padding: 1.1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: .3rem;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+  .orgs li { padding: 0 .8rem; border-left: 1px solid var(--rule); line-height: 1.3; }
+  .orgs li:first-child { padding-left: 0; border-left: 0; }
+
+  /* Hero */
+  .hero { padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem); }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(3.2rem, 10vw, 7rem);
+    line-height: .92;
+    letter-spacing: -.012em;
+    margin: 0 0 1.5rem;
+    max-width: 14ch;
+  }
+  .when {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    line-height: 1.3;
+    margin: 0 0 1.75rem;
+    max-width: 40ch;
+  }
+  .when span { display: block; }
+  .mark {
+    background: var(--mark);
+    color: var(--mark-ink);
+    padding: .04em .22em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .brief {
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    line-height: 1.45;
+    max-width: 34em;
+    margin: 0;
+  }
+
+  /* Sections */
+  .section { padding: clamp(2rem, 5vw, 3.25rem) 0; border-top: 1px solid var(--rule); }
+  h2 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    line-height: 1;
+    margin: 0 0 1rem;
+    letter-spacing: -.005em;
+  }
+  h3 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.55rem;
+    line-height: 1.05;
+    margin: 0 0 .6rem;
+  }
+  p { margin: 0 0 1rem; max-width: 62ch; }
+  p:last-child { margin-bottom: 0; }
+
+  .plain { list-style: none; margin: 0; padding: 0; max-width: 62ch; }
+  .plain li { padding: .55rem 0; border-top: 1px solid var(--rule); }
+  .plain li:first-child { border-top: 0; padding-top: 0; }
+  .plain li:last-child { padding-bottom: 0; }
+  .plain.big li { font-size: 1.2rem; font-weight: 500; }
+
+  /* Timed steps */
+  .step {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+    align-items: start;
+  }
+  .time {
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1;
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  }
+  .time .num {
+    display: inline-block;
+    font-size: 4.6rem;
+    background: var(--mark);
+    color: var(--mark-ink);
+    padding: .02em .12em 0;
+    letter-spacing: -.02em;
+  }
+  .time .unit {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--ink-2);
+    margin-top: .45rem;
+    letter-spacing: .01em;
+  }
+  .step h2 { margin-top: .35rem; }
+
+  .rounds { list-style: none; margin: 1.25rem 0 0; padding: 0; max-width: 62ch; }
+  .rounds li {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    column-gap: 1rem;
+    padding: .8rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .rounds li:last-child { padding-bottom: 0; }
+  .rounds .who { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.1; }
+  .rounds .who small { display: block; font-size: .95rem; font-weight: 700; color: var(--ink-2); margin-top: .15rem; }
+  .rounds p { margin: 0; }
+
+  .paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin: 1.25rem 0 1.25rem; max-width: 62ch; }
+  .path { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.2rem 1.2rem; }
+  .path h3 { margin-bottom: .45rem; }
+  .path p { font-size: 1rem; }
+
+  .lead { font-size: 1.15rem; }
+  .cut {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  /* Standards */
+  .areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .area { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.2rem .5rem; }
+  .area h3 { margin-bottom: .35rem; }
+  details { border-top: 1px solid var(--rule); }
+  details:first-of-type { border-top: 0; }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: .55rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--ink-2);
+    flex: none;
+    transition: transform .15s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { font-size: .95rem; color: var(--ink-2); padding: 0 0 .75rem; margin: 0; max-width: none; }
+  .areas-note { font-size: .95rem; color: var(--ink-2); margin-top: 1rem; }
+
+  /* Send */
+  .send {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .send h2 { color: inherit; }
+  .send p { color: inherit; }
+  .send a.mail {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    line-height: 1.1;
+    color: var(--mark-ink);
+    background: var(--mark);
+    text-decoration: none;
+    padding: .25em .4em;
+    margin: .5rem 0 1rem;
+    word-break: break-all;
+  }
+  .send a.mail:focus-visible { outline-color: var(--mark); }
+  .send a:not(.mail) { color: inherit; }
+
+  footer { padding: 2rem 0 2.5rem; font-size: .9rem; color: var(--ink-2); border-top: 1px solid var(--rule); }
+  footer p { margin: 0 0 .35rem; }
+
+  @media (max-width: 700px) {
+    .step { grid-template-columns: minmax(0, 1fr); row-gap: .5rem; }
+    .time { position: static; display: flex; align-items: baseline; gap: .6rem; }
+    .time .num { font-size: 3.2rem; }
+    .time .unit { margin-top: 0; }
+    .rounds li { grid-template-columns: minmax(0, 1fr); row-gap: .3rem; }
+    .rounds .who small { display: inline; margin-left: .4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    summary::after { transition: none; }
+  }
+  @media print {
+    body { background: #fff; color: #000; }
+    .time { position: static; }
+    a { color: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <ul class="orgs" aria-label="Presented by">
+      <li>Ready for Tuesday</li>
+      <li>ASU Mechanics of Democracy Laboratory</li>
+      <li>SJSU Votes</li>
+      <li>SJSU King Library</li>
+      <li>AI Center for Civic and Social Good</li>
+      <li>SJSU Institute for Public Affairs and Civic Engagement</li>
+    </ul>
+  </header>
+
+  <section class="hero">
+    <h1>AI and Elections Workshop</h1>
+    <p class="when">
+      <span>AI and Election Security Day</span>
+      <span>Wednesday, Oct. 7, 2026</span>
+      <span><span class="mark">9:30 to 11:30 a.m.</span></span>
+      <span>AI Center for Civic and Social Good, King Library</span>
+    </p>
+    <p class="brief">You have two hours to design a tool for an election office. Pick one standard. Name the problem and the user. Build it or map it. Then show the room in 60 seconds.</p>
+  </section>
+
+  <main>
+    <section class="section" id="standards">
+      <h2>Start with a standard</h2>
+      <p class="lead">The U.S. Alliance for Election Excellence is a network of election officials and the people who support them. They wrote down what a well-run election office looks like. It comes to 26 standards in six areas.</p>
+      <p>Pick one. Your tool should help an office meet it. Tap a standard to read the Alliance’s description, or read them all at <a href="https://electionexcellence.org" target="_blank" rel="noopener">electionexcellence.org</a>.</p>
+
+      <div class="areas">
+        <div class="area">
+          <h3>Emergencies and Security</h3>
+          <details><summary>Emergency planning</summary><p>Your election office is prepared to address emergencies that disrupt administrative or voting functions.</p></details>
+          <details><summary>Physical security</summary><p>Your election office maintains the security of physical spaces to protect people and materials during administration, voting, processing, storage, and transit.</p></details>
+          <details><summary>Cybersecurity</summary><p>Your election office ensures the integrity and operation of your digital infrastructure.</p></details>
+        </div>
+
+        <div class="area">
+          <h3>Office Operations</h3>
+          <details><summary>Culture</summary><p>Your election office articulates values that reinforce professional ethics and establish a positive environment for all election office staff.</p></details>
+          <details><summary>Funding and budgets</summary><p>Your election office understands your operational needs, communicates those needs to key decision-makers, and manages budgets responsibly.</p></details>
+          <details><summary>Hiring</summary><p>Your election office recruits and hires qualified candidates with the potential, temperament, and skills to successfully carry out their responsibilities.</p></details>
+          <details><summary>Training and professional development</summary><p>Your election office delivers training to onboard new staff, provides ongoing development within roles, and supports professional advancement in the field of election administration.</p></details>
+          <details><summary>Management</summary><p>Your election office effectively manages and retains competent staff by providing clear expectations, ongoing support, and recognition.</p></details>
+        </div>
+
+        <div class="area">
+          <h3>Voting Operations</h3>
+          <details><summary>Voter registration rolls</summary><p>Your election office manages voter registration records with attention to accuracy and timely processing.</p></details>
+          <details><summary>In-person voting</summary><p>Your election office supports voters’ in-person voting needs with enough sites and well-organized operations.</p></details>
+          <details><summary>Mail ballots</summary><p>Your election office has a clear and efficient system for processing mail ballots.</p></details>
+          <details><summary>Results reporting</summary><p>Your election office accurately and promptly reports election results to keep the public informed.</p></details>
+        </div>
+
+        <div class="area">
+          <h3>Poll Workers</h3>
+          <details><summary>Poll worker recruitment</summary><p>Your election office recruits enough poll workers with the skills and competencies to successfully support voters in casting their ballots.</p></details>
+          <details><summary>Poll worker training</summary><p>Your election office delivers training that helps poll workers understand and conduct their responsibilities, equips them with the resources to find answers to their questions, and sets expectations of professionalism.</p></details>
+          <details><summary>Poll worker management</summary><p>Your election office manages poll workers by efficiently maintaining information, communicating effectively, and facilitating compensation.</p></details>
+          <details><summary>Poll worker retention</summary><p>Your election office supports retention of competent poll workers and honors their civic contribution by providing a positive poll worker experience, making poll workers feel appreciated, and incorporating feedback on their experience.</p></details>
+        </div>
+
+        <div class="area">
+          <h3>Ballots and Audits</h3>
+          <details><summary>Ballot creation</summary><p>Your election office creates ballots that are well-designed, accurate, and in formats that meet voters’ needs.</p></details>
+          <details><summary>Voting resources allocation</summary><p>Your election office allocates the needed ballots, supplies, and equipment for voters to cast their ballots with ease.</p></details>
+          <details><summary>Secure ballot management</summary><p>Your office protects ballot security from printing to storage using comprehensive ballot management processes.</p></details>
+          <details><summary>Tabulation audits</summary><p>Your election office conducts tabulation audits on your voting equipment prior to certification to ensure the results are accurate.</p></details>
+        </div>
+
+        <div class="area">
+          <h3>Communications</h3>
+          <details><summary>Plain language</summary><p>Your election office writes and speaks in a way that allows voters to easily find, understand, and use the information they need.</p></details>
+          <details><summary>Information design</summary><p>Your election office uses design and accessibility best practices to format information so it is easy to find, understand, and use.</p></details>
+          <details><summary>Language access</summary><p>Your election office understands your voters’ language needs and prioritizes their preferred languages, dialects, and communication modes.</p></details>
+          <details><summary>Voter communications</summary><p>Your election office effectively distributes information through a variety of mediums that best reach your voters.</p></details>
+          <details><summary>Community relationships</summary><p>Your election office builds and maintains strong relationships in your community that foster trust in the election process.</p></details>
+          <details><summary>Media relationships</summary><p>Your election office proactively builds and maintains relationships with members of the media to communicate accurate election information.</p></details>
+        </div>
+      </div>
+      <p class="areas-note">Standards and descriptions are the Alliance’s.</p>
+    </section>
+
+    <section class="section" id="rules">
+      <h2>Ground rules</h2>
+      <p>Five rules. They apply whether you build or map.</p>
+      <ul class="plain big">
+        <li>No real voter data.</li>
+        <li>No county systems, logins or files.</li>
+        <li>Everything is a prototype.</li>
+        <li>Say what your tool does not do.</li>
+        <li>The office decides what gets used.</li>
+      </ul>
+    </section>
+
+    <section class="section step" id="step-1">
+      <div class="time" aria-label="25 minutes"><span class="num">25</span><span class="unit">minutes</span></div>
+      <div>
+        <h2>Step 1. Imagineering</h2>
+        <p>Work alone first. Then in pairs. Then tell the room.</p>
+        <ol class="rounds">
+          <li>
+            <div class="who">Solo <small>10 minutes</small></div>
+            <p>Pick a standard. Name the pain point or the issue you are solving for. Name the user.</p>
+          </li>
+          <li>
+            <div class="who">Pairs <small>10 minutes</small></div>
+            <p>Pitch each other.</p>
+          </li>
+          <li>
+            <div class="who">Room <small>five minutes</small></div>
+            <p>Say your standard and your tool in one sentence.</p>
+          </li>
+        </ol>
+        <p style="margin-top:1.5rem">Answer these four questions before you build.</p>
+        <ul class="plain">
+          <li>Who uses it, and when?</li>
+          <li>What does it replace?</li>
+          <li>What is the smallest version that works?</li>
+          <li>What could it get wrong?</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section step" id="step-2">
+      <div class="time" aria-label="20 minutes"><span class="num">20</span><span class="unit">minutes</span></div>
+      <div>
+        <h2>Step 2. Build it or map it</h2>
+        <p>Choose one path.</p>
+        <div class="paths">
+          <div class="path">
+            <h3>Builders</h3>
+            <p>One working screen. Five minutes to a first version. 10 to fix it. Five to make it presentable.</p>
+          </div>
+          <div class="path">
+            <h3>Mappers</h3>
+            <p>Fill the spec. Draw the main screen. Write the prompt you would use.</p>
+          </div>
+        </div>
+        <p class="cut">Cut until it fits.</p>
+      </div>
+    </section>
+
+    <section class="section step" id="step-3">
+      <div class="time" aria-label="60 seconds"><span class="num">60</span><span class="unit">seconds</span></div>
+      <div>
+        <h2>Step 3. Show and tell</h2>
+        <p>Each person gets 60 seconds. Cover four things.</p>
+        <ul class="plain big">
+          <li>The standard</li>
+          <li>The tool</li>
+          <li>The screen</li>
+          <li>One thing you would change</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="next">
+      <div class="send">
+        <h2>What happens next</h2>
+        <p class="lead">It is up to you. We would love to feature your work on the <a href="https://aiandelections.substack.com/" target="_blank" rel="noopener">AI + Elections Substack</a> or the <a href="https://modl.spa.asu.edu/resources" target="_blank" rel="noopener">AI + Elections Skills Hub</a>.</p>
+        <p>Email your submission to TJ Pyche at</p>
+        <a class="mail" href="mailto:tj@readyfortuesday.com?subject=AI%20and%20Elections%20Workshop%20submission">tj@readyfortuesday.com</a>
+        <p>Include your standard, your tool and a screenshot or a link. Mappers can send the spec and the prompt.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>AI and Election Security Day, San Jose State University, Oct. 7, 2026.</p>
+    <p>Standards from the <a href="https://electionexcellence.org" target="_blank" rel="noopener">U.S. Alliance for Election Excellence</a>. Workshop by <a href="https://readyfortuesday.com" target="_blank" rel="noopener">Ready for Tuesday</a> and the ASU Mechanics of Democracy Laboratory.</p>
+  </footer>
+</div>
+
+</body>
+</html>
